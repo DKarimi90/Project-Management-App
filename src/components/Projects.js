@@ -55,9 +55,9 @@ const Projects = () => {
   return (
     <div className='projects'>
       <h2>Current Projects</h2>
-      <ul>
+      <div className='projects_display'>
         {projects.map(project => (
-          <li key={project.id}>
+          <div key={project.id}>
             <p>Id: {project.id}</p>
             <p><strong>{project.title}</strong></p>
             <p>Goals: {project.goals}</p>
@@ -77,9 +77,9 @@ const Projects = () => {
             <button onClick={() => handleStatusUpdate(project.id, 'On Hold')}>
               Mark as onHold
             </button>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
