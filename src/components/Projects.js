@@ -66,7 +66,7 @@ const Projects = () => {
             <p>created_at: {project.created_at}</p>
             <p>updated_at: {project.updated_at}</p>
             <p>timestamps: {project.timestamps}</p>
-
+            <div className='buttons'>
             <button onClick={() => handleDelete(project.id)}>Delete</button>
             <button onClick={() => handleStatusUpdate(project.id, 'In Progress')}>
               Mark as InProgress
@@ -77,6 +77,7 @@ const Projects = () => {
             <button onClick={() => handleStatusUpdate(project.id, 'On Hold')}>
               Mark as onHold
             </button>
+            </div>
           </div>
         ))}
       </div>

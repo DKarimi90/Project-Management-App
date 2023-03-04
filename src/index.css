@@ -57,18 +57,30 @@ code {
   /* display: flex; 
   flex-wrap: wrap; */
     display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
 }
 
 .project {
   background-color: rgb(206, 110, 76);
   margin: 5px; 
-
-
 }
 
 .project p {
   font-size: 8px; 
   text-align: center; 
   padding: 3px; 
+}
+
+.project button {
+  font-size: 7px; 
+  padding: 2px; 
+  margin: 2px; 
+}
+
+.project button:hover {
+  cursor: pointer; 
+  color: rgb(206, 110, 76)
+}
+.buttons {
+  display: flex; 
 }
