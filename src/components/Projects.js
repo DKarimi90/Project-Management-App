@@ -53,8 +53,8 @@ const Projects = () => {
   }
 
   return (
-    <div>
-      <h2>All Projects</h2>
+    <div className='projects'>
+      <h2>Current Projects</h2>
       <ul>
         {projects.map(project => (
           <li key={project.id}>

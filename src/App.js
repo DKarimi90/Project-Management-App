@@ -1,10 +1,10 @@
 
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components /Navbar";
-import LandingPage from "./components /LandingPage";
-import Projects from "./components /Projects";
-import CreateProject from "./components /CreateProject";
+import Navbar from "./components/Navbar";
+import LandingPage from "./components/LandingPage";
+import Projects from "./components/Projects";
+import CreateProject from "./components/CreateProject";
 
 function App() {
   return (

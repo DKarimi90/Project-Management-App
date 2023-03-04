@@ -50,3 +50,6 @@ code {
 .landing a:hover {
   color: brown;
 }
+.projects h2 {
+  text-align: center; 
+}
