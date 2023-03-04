@@ -57,9 +57,9 @@ const Projects = () => {
       <h2>Current Projects</h2>
       <div className='projects_display'>
         {projects.map(project => (
-          <div key={project.id}>
-            <p>Id: {project.id}</p>
-            <p><strong>{project.title}</strong></p>
+          <div className='project' key={project.id}>
+            <p>No: {project.id}</p>
+            <p>Title: {project.title}</p>
             <p>Goals: {project.goals}</p>
             <p>Status: {project.status}</p>
             <p>Timeframe: {project.timeframe}</p>

@@ -54,5 +54,21 @@ code {
   text-align: center; 
 }
 .projects_display {
-  display: flex; 
+  /* display: flex; 
+  flex-wrap: wrap; */
+    display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+}
+
+.project {
+  background-color: rgb(206, 110, 76);
+  margin: 5px; 
+
+
+}
+
+.project p {
+  font-size: 8px; 
+  text-align: center; 
+  padding: 3px; 
 }
