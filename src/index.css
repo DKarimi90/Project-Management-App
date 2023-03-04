@@ -11,3 +11,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.navbar {
+  /* background-color: blue; */
+  height: 10vh; 
+  display: flex; 
+  align-items: center;
+  justify-content: right;
+}
+.navbar a {
+  padding: 10px;
+  text-decoration: none;
+  color: black;  
+}
+.navbar a:hover {
+  color: brown; 
+}
+
+.landing {
+  position: absolute; 
+  left: 10%; 
+  top: 25%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  flex-direction: column;
+  
+}
+.landing h1 {
+  color: brown; 
+  text-align: center;
+}
+.landing a {
+  text-align: center; 
+  color: blue; 
+  text-decoration: none; 
+}
