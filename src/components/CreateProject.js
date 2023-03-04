@@ -63,9 +63,9 @@ const CreateProject = ({ onCreateProject }) => {
   }
 
   return (
-    <div>
+    <div className='create_project'>
       <h2>Create a New Project</h2>
-      <form onSubmit={handleCreate}>
+      <form className='form' onSubmit={handleCreate}>
       <label>
         Id:
       <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
@@ -93,10 +93,6 @@ const CreateProject = ({ onCreateProject }) => {
     <label>
       updated_at:
       <input type="text" value={updated_at} onChange={(e) => setUpdated_at(e.target.value)} />
-    </label>
-    <label>
-      timestamps:
-      <input type="text" value={timestamps} onChange={(e) => setTimestamps(e.target.value)} />
     </label>
     <label>
       Assign to:

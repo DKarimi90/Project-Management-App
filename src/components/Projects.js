@@ -65,7 +65,6 @@ const Projects = () => {
             <p>Timeframe: {project.timeframe}</p>
             <p>created_at: {project.created_at}</p>
             <p>updated_at: {project.updated_at}</p>
-            <p>timestamps: {project.timestamps}</p>
             <div className='buttons'>
             <button onClick={() => handleDelete(project.id)}>Delete</button>
             <button onClick={() => handleStatusUpdate(project.id, 'In Progress')}>
