@@ -1,3 +1,7 @@
+
+
+
+
 import React, { useState, useEffect } from 'react';
 
 const Projects = () => {
@@ -52,6 +56,26 @@ const Projects = () => {
       .catch(error => console.log(error));
   }
 
+  const [members, setMembers] = useState([]);
+
+  useEffect(() => {
+    // Fetch list of members from the API
+    fetch('http://localhost:9292/members')
+      .then(response => response.json())
+      .then(data => setMembers(data))
+      .catch(error => console.log(error));
+  }, []);
+
+  const getRandomMembers = (project) => {
+    const randomMembers = [];
+    for (let i = 0; i < 5; i++) {
+      const randomIndex = Math.floor(Math.random() * members.length);
+      const member = members[randomIndex];
+      randomMembers.push(member);
+    }
+    return randomMembers;
+  }
+
   return (
     <div className='projects'>
       <h2>Current Projects</h2>
@@ -66,16 +90,24 @@ const Projects = () => {
             <p>created_at: {project.created_at}</p>
             <p>updated_at: {project.updated_at}</p>
             <div className='buttons'>
-            <button onClick={() => handleDelete(project.id)}>Delete</button>
-            <button onClick={() => handleStatusUpdate(project.id, 'In Progress')}>
-              Mark as InProgress
-            </button>
-            <button onClick={() => handleStatusUpdate(project.id, 'Completed')}>
-              Mark as Completed
-            </button>
-            <button onClick={() => handleStatusUpdate(project.id, 'On Hold')}>
-              Mark as onHold
-            </button>
+              <button onClick={() => handleDelete(project.id)}>Delete</button>
+              <button onClick={() => handleStatusUpdate(project.id, 'In Progress')}>
+                Mark as InProgress
+              </button>
+              <button onClick={() => handleStatusUpdate(project.id, 'Completed')}>
+                Mark as Completed
+              </button>
+              <button onClick={() => handleStatusUpdate(project.id, 'On Hold')}>
+                Mark as onHold
+              </button>
+            </div>
+            <div>
+              <h4>Members:</h4>
+              <ul>
+                {getRandomMembers(project).map(member => (
+                  <li key={member.id}>{member.name}</li>
+                ))}
+              </ul>
             </div>
           </div>
         ))}
