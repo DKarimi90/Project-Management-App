@@ -44,6 +44,9 @@ code {
 }
 .landing a {
   text-align: center; 
-  color: blue; 
+  color: black; 
   text-decoration: none; 
+}
+.landing a:hover {
+  color: brown;
 }
