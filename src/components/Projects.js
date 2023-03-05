@@ -101,13 +101,13 @@ const Projects = () => {
                 Mark as onHold
               </button>
             </div>
-            <div>
+            <div className='members'>
               <h4>Members:</h4>
-              <ul>
+              <div>
                 {getRandomMembers(project).map(member => (
-                  <li key={member.id}>{member.name}</li>
+                  <p key={member.id}>{member.name}</p>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         ))}

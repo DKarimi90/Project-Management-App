@@ -7,8 +7,8 @@ const CreateProject = ({ onCreateProject }) => {
   const [timeframe, setTimeframe] = useState('');
   const [status, setStatus] = useState('');
   const [created_at, setCreated_at] = useState('');
-  const [updated_at, setUpdated_at] = useState('');
-  const [timestamps, setTimestamps] = useState('')
+  const [updated_at, setUpdated_at] = useState('')
+
 
 
 
@@ -31,7 +31,6 @@ const CreateProject = ({ onCreateProject }) => {
         timeframe: timeframe, 
         created_at: created_at, 
         updated_at: updated_at,
-        timestamps: timestamps 
       })
     })
       .then(response => response.json())
@@ -43,8 +42,7 @@ const CreateProject = ({ onCreateProject }) => {
         setStatus('');
         setTimeframe('');
         setCreated_at(''); 
-        setUpdated_at('');
-        setTimestamps('')
+        setUpdated_at('')
 
       })
       .catch(error => console.log(error));

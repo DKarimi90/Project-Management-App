@@ -155,4 +155,7 @@ code {
   color: brown; 
   padding-bottom: 40px; 
 }
-
+.members h4 {
+  color: brown; 
+  text-align: center;
+}
