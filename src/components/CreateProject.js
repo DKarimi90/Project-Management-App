@@ -17,7 +17,7 @@ const CreateProject = ({ onCreateProject }) => {
 
   const handleCreate = (e) => {
     e.preventDefault();
-    // Create new project using the API
+    // Creating new project using the API
     fetch(`http://localhost:9292/projects`,{
       method: 'POST',
       headers: {
@@ -49,7 +49,7 @@ const CreateProject = ({ onCreateProject }) => {
   }
 
   useEffect(() => {
-    // Fetch list of users from the API
+    // Fetching list of members from the API
     fetch('http://localhost:9292/members')
       .then(response => response.json())
       .then(data => setUsers(data))
