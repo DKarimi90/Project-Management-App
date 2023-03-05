@@ -63,7 +63,11 @@ code {
 .project {
   margin: 5px; 
   border-radius: 3px;
+  border: 0.5px solid rgb(199, 197, 197); 
+}
+.project:hover {
   box-shadow: 1px 2px 4px black;
+
 }
 
 .project p {
@@ -158,4 +162,7 @@ code {
 .members h4 {
   color: brown; 
   text-align: center;
+}
+.members p {
+  color: rgb(41, 125, 125); 
 }

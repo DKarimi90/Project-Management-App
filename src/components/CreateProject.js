@@ -18,7 +18,7 @@ const CreateProject = ({ onCreateProject }) => {
   const handleCreate = (e) => {
     e.preventDefault();
     // Create new project using the API
-    fetch('http://localhost:9292/projects', {
+    fetch(`http://localhost:9292/projects`,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ const CreateProject = ({ onCreateProject }) => {
 
   useEffect(() => {
     // Fetch list of users from the API
-    fetch('http://localhost:9292/users')
+    fetch('http://localhost:9292/members')
       .then(response => response.json())
       .then(data => setUsers(data))
       .catch(error => console.log(error));
@@ -95,9 +95,9 @@ const CreateProject = ({ onCreateProject }) => {
     <label>
       Assign to:
       <select value={selectedUser} onChange={handleUserChange}>
-        <option value="">Select user</option>
-        {users.map((user) => (
-          <option key={user.id} value={user.id}>
+        <option value="">Select Member</option>
+        {users.map((user, index) => (
+          <option key={index} value={user.id}>
             {user.name}
           </option>
         ))}
@@ -110,3 +110,10 @@ const CreateProject = ({ onCreateProject }) => {
 };
 
 export default CreateProject;
+
+
+
+
+
+
+
