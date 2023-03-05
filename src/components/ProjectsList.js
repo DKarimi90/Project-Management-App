@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect } from 'react';
 
-const Projects = () => {
+const ProjectsList = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -12,10 +12,9 @@ const Projects = () => {
     fetch('http://localhost:9292/projects')
       .then(response => response.json())
       .then(data => setProjects(data))
-      .catch(error => console.log(error));
   }, []);
 
-  const handleDelete = (id) => {
+  function handleDelete(id){
     // Delete project using the API
     fetch(`http://localhost:9292/projects/${id}`, {
       method: 'DELETE'
@@ -25,10 +24,9 @@ const Projects = () => {
           setProjects(projects.filter(project => project.id !== id));
         }
       })
-      .catch(error => console.log(error));
   }
 
-  const handleStatusUpdate = (id, newStatus) => {
+  function handleStatusUpdate(id, newStatus){
     // Update project status using the API
     fetch(`http://localhost:9292/projects/${id}`, {
       method: 'PATCH',
@@ -66,7 +64,7 @@ const Projects = () => {
       .catch(error => console.log(error));
   }, []);
 
-  const getRandomMembers = (project) => {
+  function getRandomMembers(project){
     const randomMembers = [];
     for (let i = 0; i < 5; i++) {
       const randomIndex = Math.floor(Math.random() * members.length);
@@ -116,4 +114,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default ProjectsList;

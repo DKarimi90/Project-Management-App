@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const CreateProject = ({ onCreateProject }) => {
+const AddNewProject = ({ onCreateProject }) => {
   const [id, setId] = useState('');
   const [title, setTitle] = useState('');
   const [goals, setGoals] = useState('');
@@ -109,7 +109,7 @@ const CreateProject = ({ onCreateProject }) => {
 );
 };
 
-export default CreateProject;
+export default AddNewProject;
 
 
 
