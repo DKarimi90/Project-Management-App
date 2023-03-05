@@ -11,18 +11,6 @@ function ProjectsList(){
       .then(data => setCurrentProjects(data))
   }, []);
 
-  function handleDelete(id){
-    // Delete project using the API
-    fetch(`http://localhost:9292/projects/${id}`, {
-      method: 'DELETE'
-    })
-      .then(res => {
-        if (res.ok) {
-          setCurrentProjects(currentProjects.filter(currentProject => currentProject.id !== id));
-        }
-      })
-  }
-
   function handleStatusUpdate(id, newStatus){
     // Update project status using the API
     fetch(`http://localhost:9292/projects/${id}`, {
@@ -34,8 +22,8 @@ function ProjectsList(){
         status: newStatus
       })
     })
-      .then(response => {
-        if (response.ok) {
+      .then(res => {
+        if (res.ok) {
           const updatedProjects = currentProjects.map(currentProject => {
             if (currentProject.id === id) {
               return {
@@ -46,6 +34,18 @@ function ProjectsList(){
             return currentProject;
           });
           setCurrentProjects(updatedProjects);
+        }
+      })
+  }
+
+  function handleDelete(id){
+    // Delete project using the API
+    fetch(`http://localhost:9292/projects/${id}`, {
+      method: 'DELETE'
+    })
+      .then(res => {
+        if (res.ok) {
+          setCurrentProjects(currentProjects.filter(currentProject => currentProject.id !== id));
         }
       })
   }
@@ -61,7 +61,7 @@ function ProjectsList(){
 
   function getRandomMembers(project){
     const randomMembers = [];
-    for (let i = 0; i < 5; i++) {
+    for (let x = 0; x < 5; x++) {
       const randomIndex = Math.floor(Math.random() * members.length);
       const member = members[randomIndex];
       randomMembers.push(member);
@@ -72,13 +72,13 @@ function ProjectsList(){
   const projects = 
   currentProjects.map((project, index) => (
     <div className='project' key={index}>
-      <h6>Proj. No: {project.id}</h6>
-      <h6>Title: {project.title}</h6>
-      <h6>Goals: {project.goals}</h6>
-      <h6>Status: {project.status}</h6>
-      <h6>Timeframe: {project.timeframe}</h6>
-      <h6>created_at: {project.created_at}</h6>
-      <h6>updated_at: {project.updated_at}</h6>
+      <h6>Proj. No: {project.id}<br/><hr/>
+      Title: {project.title}<br/>
+      Goals: {project.goals}<br/>
+      Status: {project.status}<br/>
+      Timeframe: {project.timeframe}<br/>
+      created_at: {project.created_at}<br/>
+      updated_at: {project.updated_at}</h6>
       <div className='buttons'>
         <button onClick={() => handleStatusUpdate(project.id, 'In Progress')}>
           Mark as InProgress
@@ -101,8 +101,6 @@ function ProjectsList(){
       </div>
     </div>
   ))
-
-
 
   return (
     <div className='projects'>
