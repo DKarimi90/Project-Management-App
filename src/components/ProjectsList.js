@@ -1,17 +1,14 @@
 
-
-
-
 import React, { useState, useEffect } from 'react';
 
-const ProjectsList = () => {
-  const [projects, setProjects] = useState([]);
+function ProjectsList(){
+  const [currentProjects, setCurrentProjects] = useState([]);
 
   useEffect(() => {
     // Fetch list of projects from the API
     fetch('http://localhost:9292/projects')
-      .then(response => response.json())
-      .then(data => setProjects(data))
+      .then(res => res.json())
+      .then(data => setCurrentProjects(data))
   }, []);
 
   function handleDelete(id){
@@ -19,9 +16,9 @@ const ProjectsList = () => {
     fetch(`http://localhost:9292/projects/${id}`, {
       method: 'DELETE'
     })
-      .then(response => {
-        if (response.ok) {
-          setProjects(projects.filter(project => project.id !== id));
+      .then(res => {
+        if (res.ok) {
+          setCurrentProjects(currentProjects.filter(currentProject => currentProject.id !== id));
         }
       })
   }
@@ -39,19 +36,18 @@ const ProjectsList = () => {
     })
       .then(response => {
         if (response.ok) {
-          const updatedProjects = projects.map(project => {
-            if (project.id === id) {
+          const updatedProjects = currentProjects.map(currentProject => {
+            if (currentProject.id === id) {
               return {
-                ...project,
+                ...currentProject,
                 status: newStatus
               };
             }
-            return project;
+            return currentProject;
           });
-          setProjects(updatedProjects);
+          setCurrentProjects(updatedProjects);
         }
       })
-      .catch(error => console.log(error));
   }
 
   const [members, setMembers] = useState([]);
@@ -61,7 +57,6 @@ const ProjectsList = () => {
     fetch('http://localhost:9292/members')
       .then(response => response.json())
       .then(data => setMembers(data))
-      .catch(error => console.log(error));
   }, []);
 
   function getRandomMembers(project){
@@ -74,41 +69,46 @@ const ProjectsList = () => {
     return randomMembers;
   }
 
+  const projects = 
+  currentProjects.map((project, index) => (
+    <div className='project' key={index}>
+      <h6>Proj. No: {project.id}</h6>
+      <h6>Title: {project.title}</h6>
+      <h6>Goals: {project.goals}</h6>
+      <h6>Status: {project.status}</h6>
+      <h6>Timeframe: {project.timeframe}</h6>
+      <h6>created_at: {project.created_at}</h6>
+      <h6>updated_at: {project.updated_at}</h6>
+      <div className='buttons'>
+        <button onClick={() => handleStatusUpdate(project.id, 'In Progress')}>
+          Mark as InProgress
+        </button>
+        <button onClick={() => handleStatusUpdate(project.id, 'Completed')}>
+          Mark as Completed
+        </button>
+        <button onClick={() => handleStatusUpdate(project.id, 'On Hold')}>
+          Mark as onHold
+        </button>
+        <button onClick={() => handleDelete(project.id)}>Delete</button>
+      </div>
+      <div className='members'>
+        <h4>Members:</h4>
+        <div>
+          {getRandomMembers(project).map((member, index) => (
+            <p key={index}>{member.name}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+  ))
+
+
+
   return (
     <div className='projects'>
       <h2>Current Projects</h2>
       <div className='projects_display'>
-        {projects.map(project => (
-          <div className='project' key={project.id}>
-            <p>No: {project.id}</p>
-            <p>Title: {project.title}</p>
-            <p>Goals: {project.goals}</p>
-            <p>Status: {project.status}</p>
-            <p>Timeframe: {project.timeframe}</p>
-            <p>created_at: {project.created_at}</p>
-            <p>updated_at: {project.updated_at}</p>
-            <div className='buttons'>
-              <button onClick={() => handleDelete(project.id)}>Delete</button>
-              <button onClick={() => handleStatusUpdate(project.id, 'In Progress')}>
-                Mark as InProgress
-              </button>
-              <button onClick={() => handleStatusUpdate(project.id, 'Completed')}>
-                Mark as Completed
-              </button>
-              <button onClick={() => handleStatusUpdate(project.id, 'On Hold')}>
-                Mark as onHold
-              </button>
-            </div>
-            <div className='members'>
-              <h4>Members:</h4>
-              <div>
-                {getRandomMembers(project).map(member => (
-                  <p key={member.id}>{member.name}</p>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
+        {projects}
       </div>
     </div>
   );
