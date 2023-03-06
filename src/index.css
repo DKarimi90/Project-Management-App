@@ -35,8 +35,23 @@ code {
   color: brown; 
 }
 
-
-
+#button {
+  margin-top: 5px;
+}
+#button:hover {
+  color: white; 
+  background-color: brown;
+  border: none; 
+  cursor: pointer; 
+  border-radius: 2px; 
+}
+input {
+  text-align: center;
+  padding: 3px; 
+  background-color: transparent;
+  border: 1px solid brown; 
+  border-radius: 2px; 
+}
 .landing {
   position: absolute; 
   left: 10%; 
