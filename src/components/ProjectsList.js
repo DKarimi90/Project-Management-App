@@ -76,7 +76,6 @@ function ProjectsList(){
       Title: {project.title}<br/>
       Goals: {project.goals}<br/>
       Status: {project.status}<br/>
-      Timeframe: {project.timeframe}<br/>
       created_at: {project.created_at}<br/>
       updated_at: {project.updated_at}</h6>
       <div className='buttons'>
@@ -89,7 +88,7 @@ function ProjectsList(){
         <button onClick={() => handleStatusUpdate(project.id, 'On Hold')}>
           Mark as onHold
         </button>
-        <button onClick={() => handleDelete(project.id)}>Delete</button>
+        <button onClick={() => handleDelete(project.id)}>X</button>
       </div>
       <div className='members'>
         <h4>Members:</h4>
